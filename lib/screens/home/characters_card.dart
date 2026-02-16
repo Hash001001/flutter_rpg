@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_projects/shared/text_style.dart';
 
 
 class CharactersCard extends StatelessWidget {
@@ -8,6 +9,15 @@ class CharactersCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Card(
+      child: Padding(
+        padding: EdgeInsetsGeometry.symmetric(horizontal: 14, vertical: 8),
+        child: Row(
+          children: [
+            Text(characters)
+          ],
+        ),
+      ),
+    );
   }
 }
