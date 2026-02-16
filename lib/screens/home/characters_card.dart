@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
+import 'package:flutter_learning_projects/theme.dart';
 
 
 class CharactersCard extends StatelessWidget {
@@ -14,7 +15,16 @@ class CharactersCard extends StatelessWidget {
         padding: EdgeInsetsGeometry.symmetric(horizontal: 14, vertical: 8),
         child: Row(
           children: [
-            Text(characters)
+            Text(characters),
+            Expanded(child: SizedBox()),
+            IconButton(onPressed: (){
+
+            }, icon: Icon(
+              Icons.arrow_forward,
+              color: AppColor.textColor,
+            ))
+
+
           ],
         ),
       ),
