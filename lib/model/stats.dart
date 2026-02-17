@@ -1,0 +1,69 @@
+import 'dart:ffi';
+
+import 'package:flutter_learning_projects/model/character.dart';
+
+mixin Stats {
+  int _points = 10;
+  int _health = 10;
+  int _attack = 10;
+  int _defense = 10;
+  int _skills = 10;
+
+  int get points => _points;
+
+  Map<String, int> get statsAsMap => {
+    "health": _health,
+    "attack": _attack,
+    "defense": _defense,
+    "skills": _skills
+  };
+
+
+  List<Map<String,String>> get statsAsFormattedList => [
+    {"title": "health", "value": _health.toString()},
+    {"title": "attack", "value": _attack.toString()},
+    {"title": "defense", "value": _defense.toString()},
+    {"title": "skills", "value": _skills.toString()},
+  ];
+
+
+  void increaseStats(String stat) {
+    if (_points > 0) {
+      if (stat == "health") {
+        _health++;
+      }
+      if (stat == "_attack") {
+        _attack++;
+      }
+
+      if (stat == "defense") {
+        _defense++;
+      }
+
+      if (stat == "skills") {
+        _skills++;
+      }
+    }
+  }
+
+  void decreaseStats(String stat) {
+    if (stat == "health" && _health > 5) {
+      _health--;
+      _points++;
+    }
+    if (stat == "_attack" && _attack > 5) {
+      _attack--;
+      _points++;
+    }
+
+    if (stat == "_defense" && _defense > 5) {
+      _defense--;
+      _points++;
+    }
+
+    if (stat == "_skills" && _skills > 5) {
+      _skills--;
+      _points++;
+    }
+  }
+}
