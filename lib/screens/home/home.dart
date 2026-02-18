@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
 import 'package:flutter_learning_projects/theme.dart';
 
 import '../../shared/styled_buttons.dart';
 import 'characters_card.dart';
+
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,8 +14,6 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
-
-List characters = ["Mario", "Lio", "Lingui", "Sui", "DioFi", "Dingo"];
 
 class _HomeState extends State<Home> {
   @override
