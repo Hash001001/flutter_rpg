@@ -24,6 +24,4 @@ class Character with Stats {
   void toggleFav(){
     _isFav = !_isFav;
   }
-
-
 }
