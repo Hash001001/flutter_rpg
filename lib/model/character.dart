@@ -1,3 +1,4 @@
+import 'package:flutter_learning_projects/model/skill.dart';
 import 'package:flutter_learning_projects/model/stats.dart';
 import 'package:flutter_learning_projects/model/vocation.dart';
 
@@ -12,6 +13,7 @@ class Character with Stats {
 });
 
   //Fields
+  final Set<Skill> skills = {};
   final Vocation vocation;
   final String id;
   final String name;
@@ -24,4 +26,10 @@ class Character with Stats {
   void toggleFav(){
     _isFav = !_isFav;
   }
+
+  void updateSkill(Skill skill){
+    skills.clear();
+    skills.add(skill);
+  }
+
 }
