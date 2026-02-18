@@ -39,6 +39,22 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+# C/C++ sources and headers
+*.cc
+*.cxx
+*.cpp
+*.hh
+*.h
+*.hpp
+# C/C++ sources and headers
+# CMake files
+*.cmake
+
+# Build artifacts (optional)
+build/
+*.o
+*.obj
+
 # Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile
