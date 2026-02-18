@@ -49,6 +49,7 @@ app.*.map.json
 # C/C++ sources and headers
 # CMake files
 *.cmake
+*.swift
 
 # Build artifacts (optional)
 build/
