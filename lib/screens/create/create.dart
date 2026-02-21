@@ -13,6 +13,10 @@ class Create extends StatefulWidget {
 }
 
 class _CreateState extends State<Create> {
+
+  final _nameController = TextEditingController();
+  final _sloganController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +41,7 @@ class _CreateState extends State<Create> {
             //name and slogan inout
 
             TextField(
+              controller: _nameController,
               style: GoogleFonts.kanit(
                   textStyle: Theme.of(context).textTheme.bodyMedium
               ),
@@ -51,6 +56,7 @@ class _CreateState extends State<Create> {
             SizedBox(height: 20,),
 
             TextField(
+              controller: _sloganController,
               style: GoogleFonts.kanit(
                   textStyle: Theme.of(context).textTheme.bodyMedium
               ),
