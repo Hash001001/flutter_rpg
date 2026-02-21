@@ -4,6 +4,7 @@ import 'package:flutter_learning_projects/shared/text_style.dart';
 import 'package:flutter_learning_projects/theme.dart';
 
 import '../../shared/styled_buttons.dart';
+import '../create/create.dart';
 import 'characters_card.dart';
 
 
@@ -36,7 +37,9 @@ class _HomeState extends State<Home> {
 
             SizedBox(height: 20,),
 
-            StyledButtons(onPressed: () {}, child: HeadlineText(text: "Create New")),
+            StyledButtons(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (ctx) => Create()));
+            }, child: HeadlineText(text: "Create New")),
           ],
         ),
       ),

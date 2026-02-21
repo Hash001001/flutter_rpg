@@ -8,6 +8,7 @@ import 'package:flutter_learning_projects/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 import '../../shared/text_style.dart';
+import '../home/home.dart';
 
 var uuid = Uuid();
 
@@ -43,6 +44,10 @@ class _CreateState extends State<Create> {
         vocation: selectedVocation,
       ),
     );
+
+    Navigator.push(context, MaterialPageRoute(builder: (ctx) => Home()));
+
+
   }
 
   @override
