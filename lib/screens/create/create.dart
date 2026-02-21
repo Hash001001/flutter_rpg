@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_learning_projects/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../shared/text_style.dart';
 
@@ -30,7 +32,36 @@ class _CreateState extends State<Create> {
 
             SizedBox(
               height: 50,
+            ),
+
+            //name and slogan inout
+
+            TextField(
+              style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium
+              ),
+              cursorColor: AppColor.textColor,
+
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.person_2),
+                label: Text("Character Name"),
+              ),
+            ),
+
+            SizedBox(height: 20,),
+
+            TextField(
+              style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium
+              ),
+              cursorColor: AppColor.textColor,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.chat),
+                label: Text("Character slogan"),
+              ),
             )
+
+
           ],
         ),
       ),

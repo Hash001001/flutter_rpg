@@ -61,6 +61,17 @@ ThemeData primaryTheme = ThemeData(
     shadowColor: Colors.transparent,
     shape: RoundedRectangleBorder(),
     margin: EdgeInsets.only(bottom: 16)
-)
+),
+
+  //TextField Theme
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: AppColor.secondaryColor.withOpacity(0.5),
+    border: InputBorder.none,
+    prefixIconColor: AppColor.textColor,
+    labelStyle: TextStyle(
+      color: AppColor.textColor
+    )
+  )
 
 );
