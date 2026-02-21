@@ -15,7 +15,7 @@ class StyledButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: EdgeInsets.symmetric(vertical: 1, horizontal: 8),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [AppColor.primaryColor, AppColor.primaryAccent],
