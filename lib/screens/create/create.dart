@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/model/vocation.dart';
 import 'package:flutter_learning_projects/screens/create/vocation_card.dart';
 import 'package:flutter_learning_projects/shared/styled_buttons.dart';
 import 'package:flutter_learning_projects/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:uuid/uuid.dart';
 import '../../shared/text_style.dart';
+
+var uuid = Uuid();
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -31,6 +34,15 @@ class _CreateState extends State<Create> {
 
     print(_nameController.text);
     print(_sloganController.text);
+
+    characters.add(
+      Character(
+        id: uuid.v4(),
+        name: _nameController.text.trim(),
+        slogan: _sloganController.text.trim(),
+        vocation: selectedVocation,
+      ),
+    );
   }
 
   @override
@@ -106,10 +118,33 @@ class _CreateState extends State<Create> {
 
               SizedBox(height: 20),
 
-              VocationCard(selected: selectedVocation == Vocation.junkie ,onTap: vocationSelectHandler, vocation: Vocation.junkie),
-              VocationCard(selected: selectedVocation == Vocation.ninja,onTap: vocationSelectHandler, vocation: Vocation.ninja),
-              VocationCard(selected: selectedVocation == Vocation.raider,onTap: vocationSelectHandler, vocation: Vocation.raider),
-              VocationCard(selected: selectedVocation == Vocation.wizard,onTap: vocationSelectHandler, vocation: Vocation.wizard),
+              VocationCard(
+                selected: selectedVocation == Vocation.junkie,
+                onTap: vocationSelectHandler,
+                vocation: Vocation.junkie,
+              ),
+              VocationCard(
+                selected: selectedVocation == Vocation.ninja,
+                onTap: vocationSelectHandler,
+                vocation: Vocation.ninja,
+              ),
+              VocationCard(
+                selected: selectedVocation == Vocation.raider,
+                onTap: vocationSelectHandler,
+                vocation: Vocation.raider,
+              ),
+              VocationCard(
+                selected: selectedVocation == Vocation.wizard,
+                onTap: vocationSelectHandler,
+                vocation: Vocation.wizard,
+              ),
+
+              Center(child: Icon(Icons.code, color: AppColor.primaryColor)),
+
+              HeadlineText(text: "Good Luck."),
+              StyledText(text: "And enjoy the journey...."),
+
+              SizedBox(height: 20,),
 
               StyledButtons(
                 onPressed: submitHandler,
