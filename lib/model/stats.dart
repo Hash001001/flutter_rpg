@@ -32,7 +32,7 @@ mixin Stats {
       if (stat == "health") {
         _health++;
       }
-      if (stat == "_attack") {
+      if (stat == "attack") {
         _attack++;
       }
 
@@ -43,6 +43,7 @@ mixin Stats {
       if (stat == "skills") {
         _skills++;
       }
+      _points--;
     }
   }
 
@@ -51,17 +52,17 @@ mixin Stats {
       _health--;
       _points++;
     }
-    if (stat == "_attack" && _attack > 5) {
+    if (stat == "attack" && _attack > 5) {
       _attack--;
       _points++;
     }
 
-    if (stat == "_defense" && _defense > 5) {
+    if (stat == "defense" && _defense > 5) {
       _defense--;
       _points++;
     }
 
-    if (stat == "_skills" && _skills > 5) {
+    if (stat == "skills" && _skills > 5) {
       _skills--;
       _points++;
     }
