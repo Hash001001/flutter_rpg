@@ -2,7 +2,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
+import 'package:flutter_learning_projects/screens/profile/skill_list.dart';
 import 'package:flutter_learning_projects/screens/profile/stats_table.dart';
+import 'package:flutter_learning_projects/shared/styled_buttons.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
 import 'package:flutter_learning_projects/theme.dart';
 
@@ -14,6 +16,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.secondaryAccent,
       appBar: AppBar(title: TitleText(text: character.name), centerTitle: true),
       body: SingleChildScrollView(
         child: Column(
@@ -82,15 +85,27 @@ class Profile extends StatelessWidget {
               child: Column(
                 children: [
                   StatsTable(character),
+                  SkillList(character),
                 ],
               ),
-            )
-
-
-
+            ),
             //save button
-
-
+            
+            StyledButtons(
+              onPressed: (){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: StyledText(text: "Character was saved."),
+                    duration: Duration(seconds: 2),
+                    showCloseIcon: true,
+                    backgroundColor: AppColor.secondaryColor,
+                  )
+                );
+              },
+              child: HeadlineText(text: "Save Character"),
+            ),
+            SizedBox(height: 20,)
+            
           ],
         ),
       ),

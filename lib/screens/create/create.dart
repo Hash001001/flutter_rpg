@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/model/vocation.dart';
@@ -77,8 +78,7 @@ class _CreateState extends State<Create> {
       ),
     );
 
-    Navigator.push(context, MaterialPageRoute(builder: (ctx) => Home()));
-
+    Navigator.push(context, CupertinoPageRoute(builder: (ctx) => Home()));
   }
 
   @override
