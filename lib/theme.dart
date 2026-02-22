@@ -72,6 +72,13 @@ ThemeData primaryTheme = ThemeData(
     labelStyle: TextStyle(
       color: AppColor.textColor
     )
+  ),
+
+  //Dialog Theme
+
+  dialogTheme: DialogThemeData(
+    backgroundColor: AppColor.secondaryAccent,
+    surfaceTintColor: Colors.transparent
   )
 
 );

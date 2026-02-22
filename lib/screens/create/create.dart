@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/model/vocation.dart';
 import 'package:flutter_learning_projects/screens/create/vocation_card.dart';
@@ -25,11 +24,44 @@ class _CreateState extends State<Create> {
 
   void submitHandler() {
     if (_nameController.text.trim().isEmpty) {
-      print("name must not be empty");
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          title: HeadlineText(text: "Name Required"),
+          content: StyledText(text: "Every RPG character needs a great name..."),
+          actions: [
+            StyledButtons(onPressed: (){
+              Navigator.pop(context);
+            }, child: HeadlineText(text: "Close"),
+
+            ),
+          ],
+
+          actionsAlignment: MainAxisAlignment.center,
+
+        );
+      });
       return;
     }
     if (_sloganController.text.trim().isEmpty) {
       print("slogan must not be empty");
+
+      showDialog(context: context, builder: (context){
+        return AlertDialog(
+          title: HeadlineText(text: "Slogan Required"),
+          content: StyledText(text: "Remember to add a catchy slogan name..."),
+          actions: [
+            StyledButtons(onPressed: (){
+              Navigator.pop(context);
+            }, child: HeadlineText(text: "Close"),
+
+            ),
+          ],
+
+          actionsAlignment: MainAxisAlignment.center,
+
+        );
+      });
+
       return;
     }
 
@@ -46,7 +78,6 @@ class _CreateState extends State<Create> {
     );
 
     Navigator.push(context, MaterialPageRoute(builder: (ctx) => Home()));
-
 
   }
 
@@ -153,7 +184,7 @@ class _CreateState extends State<Create> {
 
               StyledButtons(
                 onPressed: submitHandler,
-                child: StyledText(text: "Create Character"),
+                child: HeadlineText(text: "Create Character"),
               ),
             ],
           ),
