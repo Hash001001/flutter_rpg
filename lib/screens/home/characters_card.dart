@@ -3,6 +3,8 @@ import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
 import 'package:flutter_learning_projects/theme.dart';
 
+import '../profile/profile.dart';
+
 
 class CharactersCard extends StatelessWidget {
   const CharactersCard({required this.characters, super.key});
@@ -31,7 +33,7 @@ class CharactersCard extends StatelessWidget {
 
             Expanded(child: SizedBox()),
             IconButton(onPressed: (){
-
+              Navigator.push(context, MaterialPageRoute(builder: (ctx) => Profile(character: characters)));
             }, icon: Icon(
               Icons.arrow_forward,
               color: AppColor.textColor,
