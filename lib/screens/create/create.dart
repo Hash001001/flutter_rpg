@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/model/vocation.dart';
 import 'package:flutter_learning_projects/screens/create/vocation_card.dart';
+import 'package:flutter_learning_projects/services/character_store.dart';
 import 'package:flutter_learning_projects/shared/styled_buttons.dart';
 import 'package:flutter_learning_projects/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import '../../shared/text_style.dart';
 import '../home/home.dart';
@@ -69,7 +71,7 @@ class _CreateState extends State<CreateScreen> {
     print(_nameController.text);
     print(_sloganController.text);
 
-    characters.add(
+    Provider.of<CharacterStore>(context, listen: false).addCharacter(
       Character(
         id: uuid.v4(),
         name: _nameController.text.trim(),
