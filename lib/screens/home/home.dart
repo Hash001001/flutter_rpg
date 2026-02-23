@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
+import 'package:flutter_learning_projects/services/character_store.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
+import 'package:provider/provider.dart';
 import '../../shared/styled_buttons.dart';
 import '../../theme.dart';
 import '../create/create.dart';
@@ -25,18 +27,22 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: characters.length,
-                  itemBuilder: (context, index){
-                  return CharactersCard(
-                    characters:  characters[index],
-                  );
-              }),
+              child: Consumer<CharacterStore>(
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    itemCount: value.characters.length,
+                      itemBuilder: (context, index){
+                      return CharactersCard(
+                        characters:  value.characters[index],
+                      );
+                  });
+                }
+              ),
             ),
 
             SizedBox(height: 20,),
             StyledButtons(onPressed: () {
-              Navigator.push(context, CupertinoPageRoute(builder: (ctx) => Create()));
+              Navigator.push(context, CupertinoPageRoute(builder: (ctx) => CreateScreen()));
             }, child: HeadlineText(text: "Create New")),
           ],
         ),
