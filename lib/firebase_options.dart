@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-masterclass-83581.firebasestorage.app',
     iosBundleId: 'com.example.flutterLearningProjects',
   );
+
 }

@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/screens/profile/skill_list.dart';
 import 'package:flutter_learning_projects/screens/profile/stats_table.dart';
+import 'package:flutter_learning_projects/services/character_store.dart';
 import 'package:flutter_learning_projects/shared/styled_buttons.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
 import 'package:flutter_learning_projects/theme.dart';
+import 'package:provider/provider.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key, required this.character});
@@ -93,6 +95,9 @@ class Profile extends StatelessWidget {
             
             StyledButtons(
               onPressed: (){
+                Provider.of<CharacterStore>(context, listen: false).updateCharacter(character);
+
+
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: StyledText(text: "Character was saved."),
