@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/screens/profile/skill_list.dart';
@@ -34,6 +32,7 @@ class Profile extends StatelessWidget {
                     "assets/img/vocations/${character.vocation.image}",
                     width: 150,
                     height: 150,
+                   // gaplessPlayback: true,
                   ),
                   SizedBox(width: 20),
                   Expanded(

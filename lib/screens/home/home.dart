@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_learning_projects/model/character.dart';
+import 'package:flutter_learning_projects/model/vocation.dart';
 import 'package:flutter_learning_projects/services/character_store.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
 import 'package:provider/provider.dart';
@@ -17,11 +17,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   void initState() {
     Provider.of<CharacterStore>(context, listen: false)
-    .fetchCharacterDataOnce();
+        .fetchCharacterDataOnce();
 
     super.initState();
   }
@@ -40,19 +39,27 @@ class _HomeState extends State<Home> {
                 builder: (context, value, child) {
                   return ListView.builder(
                     itemCount: value.characters.length,
-                      itemBuilder: (context, index){
+                    itemBuilder: (context, index) {
                       return CharactersCard(
-                        characters:  value.characters[index],
+                        characters: value.characters[index],
                       );
-                  });
-                }
+                    },
+                  );
+                },
               ),
             ),
-
-            SizedBox(height: 20,),
-            StyledButtons(onPressed: () {
-              Navigator.push(context, CupertinoPageRoute(builder: (ctx) => CreateScreen()));
-            }, child: HeadlineText(text: "Create New")),
+            SizedBox(
+              height: 20,
+            ),
+            StyledButtons(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                        builder: (ctx) => CreateScreen()));
+              },
+              child: HeadlineText(text: "Create New"),
+            ),
           ],
         ),
       ),

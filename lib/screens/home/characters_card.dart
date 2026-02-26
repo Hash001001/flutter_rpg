@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
 import 'package:flutter_learning_projects/shared/text_style.dart';
@@ -19,8 +20,28 @@ class CharactersCard extends StatelessWidget {
         child: Row(
           children: [
 
-            Image.asset("assets/img/vocations/${characters.vocation.image}",
-            width: 80,),
+            Image.asset(
+              "assets/img/vocations/${characters.vocation.image}",
+              width: 100, // adjust to your layout
+              height: 100, // adjust to your layout
+              fit: BoxFit.cover,
+              cacheWidth: 200, // decode at smaller size to reduce memory
+              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                if (wasSynchronouslyLoaded) return child;
+                return AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  child: frame != null
+                      ? child
+                      : SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
+                  ),
+                );
+              },
+            ),
             SizedBox(width: 20,),
 
             Column(
@@ -33,7 +54,7 @@ class CharactersCard extends StatelessWidget {
 
             Expanded(child: SizedBox()),
             IconButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (ctx) => Profile(character: characters)));
+              Navigator.push(context, CupertinoPageRoute(builder: (ctx) => Profile(character: characters)));
             }, icon: Icon(
               Icons.arrow_forward,
               color: AppColor.textColor,
