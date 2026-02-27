@@ -28,11 +28,14 @@ class Profile extends StatelessWidget {
               color: AppColor.secondaryColor.withOpacity(0.5),
               child: Row(
                 children: [
-                  Image.asset(
-                    "assets/img/vocations/${character.vocation.image}",
-                    width: 150,
-                    height: 150,
-                   // gaplessPlayback: true,
+                  Hero(
+                    tag: character.id.toString(),
+                    child: Image.asset(
+                      "assets/img/vocations/${character.vocation.image}",
+                      width: 150,
+                      height: 150,
+                     // gaplessPlayback: true,
+                    ),
                   ),
                   SizedBox(width: 20),
                   Expanded(

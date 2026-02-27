@@ -20,27 +20,30 @@ class CharactersCard extends StatelessWidget {
         child: Row(
           children: [
 
-            Image.asset(
-              "assets/img/vocations/${characters.vocation.image}",
-              width: 100, // adjust to your layout
-              height: 100, // adjust to your layout
-              fit: BoxFit.cover,
-              cacheWidth: 200, // decode at smaller size to reduce memory
-              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                if (wasSynchronouslyLoaded) return child;
-                return AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  child: frame != null
-                      ? child
-                      : SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Center(
-                      child: CircularProgressIndicator(strokeWidth: 2),
+            Hero(
+              tag: characters.id.toString(),
+              child: Image.asset(
+                "assets/img/vocations/${characters.vocation.image}",
+                width: 100, // adjust to your layout
+                height: 100, // adjust to your layout
+                fit: BoxFit.cover,
+                cacheWidth: 200, // decode at smaller size to reduce memory
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                  if (wasSynchronouslyLoaded) return child;
+                  return AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    child: frame != null
+                        ? child
+                        : SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: Center(
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
             SizedBox(width: 20,),
 
