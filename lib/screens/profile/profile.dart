@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning_projects/model/character.dart';
+import 'package:flutter_learning_projects/screens/profile/heart.dart';
 import 'package:flutter_learning_projects/screens/profile/skill_list.dart';
 import 'package:flutter_learning_projects/screens/profile/stats_table.dart';
 import 'package:flutter_learning_projects/services/character_store.dart';
@@ -34,7 +35,7 @@ class Profile extends StatelessWidget {
                       "assets/img/vocations/${character.vocation.image}",
                       width: 150,
                       height: 150,
-                     // gaplessPlayback: true,
+                      // gaplessPlayback: true,
                     ),
                   ),
                   SizedBox(width: 20),
@@ -51,54 +52,52 @@ class Profile extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 20,),
+            SizedBox(height: 20),
 
-            Center(
-              child: Icon(Icons.code, color: AppColor.primaryColor,),
-            ),
+            Heart(character: character,),
 
-            Padding(padding: EdgeInsetsGeometry.all(16),
-            child: Container(
-              color: AppColor.secondaryColor,
-              width: double.infinity,
+            Center(child: Icon(Icons.code, color: AppColor.primaryColor)),
+
+            Padding(
               padding: EdgeInsetsGeometry.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HeadlineText(text: "Slogan"),
-                  StyledText(text: character.slogan),
-                  SizedBox(height: 20,),
+              child: Container(
+                color: AppColor.secondaryColor,
+                width: double.infinity,
+                padding: EdgeInsetsGeometry.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeadlineText(text: "Slogan"),
+                    StyledText(text: character.slogan),
+                    SizedBox(height: 20),
 
-                  HeadlineText(text: "Weapon of choice"),
-                  StyledText(text: character.vocation.weapon),
-                  SizedBox(height: 20,),
+                    HeadlineText(text: "Weapon of choice"),
+                    StyledText(text: character.vocation.weapon),
+                    SizedBox(height: 20),
 
-                  HeadlineText(text: "Unique Ability"),
-                  StyledText(text: character.vocation.ability),
-                  SizedBox(height: 20,),
-                ],
-
+                    HeadlineText(text: "Unique Ability"),
+                    StyledText(text: character.vocation.ability),
+                    SizedBox(height: 20),
+                  ],
+                ),
               ),
-            ),
             ),
 
             //stats table and skills
-
             Container(
               alignment: Alignment.center,
               child: Column(
-                children: [
-                  StatsTable(character),
-                  SkillList(character),
-                ],
+                children: [StatsTable(character), SkillList(character)],
               ),
             ),
-            //save button
-            
-            StyledButtons(
-              onPressed: (){
-                Provider.of<CharacterStore>(context, listen: false).updateCharacter(character);
 
+            //save button
+            StyledButtons(
+              onPressed: () {
+                Provider.of<CharacterStore>(
+                  context,
+                  listen: false,
+                ).updateCharacter(character);
 
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -106,13 +105,12 @@ class Profile extends StatelessWidget {
                     duration: Duration(seconds: 2),
                     showCloseIcon: true,
                     backgroundColor: AppColor.secondaryColor,
-                  )
+                  ),
                 );
               },
               child: HeadlineText(text: "Save Character"),
             ),
-            SizedBox(height: 20,)
-            
+            SizedBox(height: 20),
           ],
         ),
       ),
