@@ -24,37 +24,41 @@ class Profile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             //will add different widgets
-            Container(
-              padding: EdgeInsets.all(16),
-              color: AppColor.secondaryColor.withOpacity(0.5),
-              child: Row(
-                children: [
-                  Hero(
-                    tag: character.id.toString(),
-                    child: Image.asset(
-                      "assets/img/vocations/${character.vocation.image}",
-                      width: 150,
-                      height: 150,
-                      // gaplessPlayback: true,
-                    ),
+            Stack(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(16),
+                  color: AppColor.secondaryColor.withOpacity(0.5),
+                  child: Row(
+                    children: [
+                      Hero(
+                        tag: character.id.toString(),
+                        child: Image.asset(
+                          "assets/img/vocations/${character.vocation.image}",
+                          width: 150,
+                          height: 150,
+                          // gaplessPlayback: true,
+                        ),
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            HeadlineText(text: character.vocation.title),
+                            StyledText(text: character.vocation.description),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        HeadlineText(text: character.vocation.title),
-                        StyledText(text: character.vocation.description),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                Positioned(
+                  top: 10,
+                    right: 10,
+                    child: Heart(character: character,)),
+              ],
             ),
-
-            SizedBox(height: 20),
-
-            Heart(character: character,),
 
             Center(child: Icon(Icons.code, color: AppColor.primaryColor)),
 
